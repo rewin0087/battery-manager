@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Battery Monitor</string>
+    <string name="home_section">Home</string>
+    <string name="history_section">History</string>
+    <string name="settings_section">Settings</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
