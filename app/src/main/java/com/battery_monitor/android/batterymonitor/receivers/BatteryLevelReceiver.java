@@ -26,7 +26,8 @@ public class BatteryLevelReceiver extends BroadcastReceiver {
         this.scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
     }
 
-    public float getBatteryLevel() {
+    // retrieve battery level | percentage
+    public float getBatteryPercentage() {
         return this.level / (float) this.scale;
     }
 }

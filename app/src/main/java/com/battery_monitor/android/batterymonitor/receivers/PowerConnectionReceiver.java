@@ -31,14 +31,17 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
         // DO ACTION | TASK TO TODO
     }
 
+    // charging? || charged?
     public boolean isCharging() {
         return (this.status == BatteryManager.BATTERY_STATUS_CHARGING || this.status == BatteryManager.BATTERY_STATUS_FULL);
     }
 
+    // charging connection - USB?
     public boolean isChargingOnUSB() {
         return this.chargePlug == BatteryManager.BATTERY_PLUGGED_USB;
     }
 
+    // charging connection - AC?
     public boolean isChargingOnAC() {
         return this.chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
     }
