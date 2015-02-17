@@ -7,6 +7,23 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <!-- POWER CONNECTION LISTENER -->
+        <receiver android:name=".receivers.PowerConnectionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- BATTERY LEVEL LISTENER -->
+        <receiver android:name=".receivers.BatteryLevelReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_BATTERY_LOW"/>
+                <action android:name="android.intent.action.ACTION_BATTERY_OKAY"/>
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name" >
