@@ -25,7 +25,7 @@ public class BatteryStatusReceiver extends BroadcastReceiver {
     public void doAction() {
         if(this.intent.getAction() == Intent.ACTION_BATTERY_CHANGED) {
             BatteryAction battery = new BatteryAction(this.intent);
-            String message = "isCharging: " + battery.isCharging();
+//            String message = "isCharging: " + battery.isCharging() + " isFullCharged: " + battery.isFullCharged();
 //            Toast.makeText(this.context,"BATTERY STATUS RECEIVER " + message, Toast.LENGTH_LONG).show();
         }
     }
