@@ -102,6 +102,7 @@ public class BatteryAction {
                 status = "OVERHEAT";
                 break;
             default:
+                status = "UNKNOWN";
                 break;
         }
 
