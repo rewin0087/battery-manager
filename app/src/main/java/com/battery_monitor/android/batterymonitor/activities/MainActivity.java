@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.battery_monitor.android.batterymonitor.R;
+import com.battery_monitor.android.batterymonitor.actions.BatteryAction;
 import com.battery_monitor.android.batterymonitor.adapters.SectionsPagerAdapter;
 
 
@@ -69,6 +70,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
+        BatteryAction.runService(getApplicationContext());
     }
 
 

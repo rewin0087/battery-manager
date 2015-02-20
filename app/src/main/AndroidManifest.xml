@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme" >
 
         <!-- POWER CONNECTION LISTENER -->
-        <receiver android:name=".receivers.PowerConnectionReceiver">
+        <receiver android:name=".receivers.PowerConnectionReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
@@ -17,12 +17,14 @@
         </receiver>
 
         <!-- BATTERY LEVEL LISTENER -->
-        <receiver android:name=".receivers.BatteryLevelReceiver">
+        <receiver android:name=".receivers.BatteryLevelReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_BATTERY_LOW"/>
                 <action android:name="android.intent.action.ACTION_BATTERY_OKAY"/>
             </intent-filter>
         </receiver>
+
+        <service android:name=".services.BatteryMonitorService" android:exported="false" android:enabled="true" />
 
         <activity
             android:name=".activities.MainActivity"
