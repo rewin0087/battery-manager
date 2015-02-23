@@ -37,11 +37,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 //            return PlaceholderFragment.newInstance(position + 1);
         switch (position) {
             case 0:
-                return HomeFragment.newInstance(position, this.context);
+                return HomeFragment.newInstance(position);
             case 1:
-                return HistoryFragment.newInstance(position, this.context);
+                return HistoryFragment.newInstance(position);
             case 2:
-                return SettingsFragment.newInstance(position, this.context);
+                return SettingsFragment.newInstance(position);
         }
         return null;
     }

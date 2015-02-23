@@ -8,8 +8,8 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.battery_monitor.android.batterymonitor.actions.BatteryAction;
 import com.battery_monitor.android.batterymonitor.receivers.BatteryStatusReceiver;
+import com.battery_monitor.android.batterymonitor.utilities.Battery;
 
 /**
  * Created by rewin0087 on 2/19/15.
@@ -25,7 +25,7 @@ public class BatteryMonitorService extends Service {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         BatteryStatusReceiver batteryStatusReceiver = new BatteryStatusReceiver();
         context.registerReceiver(batteryStatusReceiver, ifilter);
-        BatteryAction battery = new BatteryAction(context);
+        Battery battery = Battery.getInstance(context);
         Log.d("BATTERY SERVICE", "RUNNING");
         Log.d("isCharging:", battery.isCharging() + "");
         Log.d("isFullCharged:", battery.isFullCharged() + "");

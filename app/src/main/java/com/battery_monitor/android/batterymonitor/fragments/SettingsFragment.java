@@ -1,6 +1,5 @@
 package com.battery_monitor.android.batterymonitor.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +13,15 @@ import com.battery_monitor.android.batterymonitor.R;
  */
 public class SettingsFragment extends BaseFragment {
 
-    public Context context;
-
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static SettingsFragment newInstance(int sectionNumber, Context context) {
+    public static SettingsFragment newInstance(int sectionNumber) {
         SettingsFragment fragment = new SettingsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
-        fragment.context = context;
         return fragment;
     }
 

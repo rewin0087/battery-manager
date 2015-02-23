@@ -19,7 +19,7 @@
 
 <resources>
 
-    <style name="Theme.Orange" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Orange" parent="@style/AppTheme">
         <item name="actionBarItemBackground">@drawable/selectable_background_orange</item>
         <item name="popupMenuStyle">@style/PopupMenu.Orange</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Orange</item>

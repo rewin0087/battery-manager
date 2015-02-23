@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.battery_monitor.android.batterymonitor.actions.BatteryAction;
+import com.battery_monitor.android.batterymonitor.utilities.Battery;
 
 /**
  * Created by rewin0087 on 2/19/15.
@@ -24,7 +24,8 @@ public class BatteryStatusReceiver extends BroadcastReceiver {
 
     public void doAction() {
         if(this.intent.getAction() == Intent.ACTION_BATTERY_CHANGED) {
-            BatteryAction battery = new BatteryAction(this.intent);
+            Battery battery = new Battery(this.intent);
+            battery.context = this.context;
 //            String message = "isCharging: " + battery.isCharging() + " isFullCharged: " + battery.isFullCharged();
 //            Toast.makeText(this.context,"BATTERY STATUS RECEIVER " + message, Toast.LENGTH_LONG).show();
         }

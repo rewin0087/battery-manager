@@ -1,5 +1,6 @@
 package com.battery_monitor.android.batterymonitor.fragments;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 /**
@@ -11,4 +12,6 @@ public class BaseFragment extends Fragment {
      * fragment.
      */
     protected static final String ARG_SECTION_NUMBER = "section_number";
+
+    public Context context;
 }

@@ -10,8 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.battery_monitor.android.batterymonitor.R;
-import com.battery_monitor.android.batterymonitor.actions.BatteryAction;
 import com.battery_monitor.android.batterymonitor.adapters.SectionsPagerAdapter;
+import com.battery_monitor.android.batterymonitor.utilities.Battery;
+import com.battery_monitor.android.batterymonitor.utilities.FontFace;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -34,8 +35,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Battery.getInstance(this).setAppTheme();
+        FontFace.setAppFontToLed(this);
         setContentView(R.layout.activity_main);
-
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -73,9 +75,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setTabListener(this));
         }
 
-        BatteryAction.runService(getApplicationContext());
+        Battery.runService(getApplicationContext());
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,5 +114,4 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
-
 }

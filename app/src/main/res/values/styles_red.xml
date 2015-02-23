@@ -19,7 +19,7 @@
 
 <resources>
 
-    <style name="Theme.Red" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Red" parent="@style/AppTheme">
         <item name="actionBarItemBackground">@drawable/selectable_background_red</item>
         <item name="popupMenuStyle">@style/PopupMenu.Red</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Red</item>
