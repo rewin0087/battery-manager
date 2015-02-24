@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setDisplayUseLogoEnabled(true);
-        actionBar.setElevation(5f);
+        actionBar.setElevation(50f);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -76,6 +76,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         }
 
         Battery.runService(getApplicationContext());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

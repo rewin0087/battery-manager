@@ -5,8 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.battery_monitor.android.batterymonitor.R;
+import com.battery_monitor.android.batterymonitor.helpers.BatteryDetailCardView;
 import com.battery_monitor.android.batterymonitor.utilities.Battery;
 
 /**
@@ -31,12 +33,34 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.home_fragment, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         context = getActivity().getApplication();
-
         battery = Battery.getInstance(context);
+
+        View rootView = inflater.inflate(R.layout.home_fragment, container, false);
+        LinearLayout homeContainer = (LinearLayout) rootView.findViewById(R.id.home_container);
+        // BATTERY INFORMATION
+        BatteryDetailCardView batteryInformationCardView = BatteryDetailCardView.getInstance(context);
+        batteryInformationCardView.setTitle("BATTERY INFORMATION");
+        batteryInformationCardView.addContent("HEALTH:", battery.gethealthStatus());
+        batteryInformationCardView.addContent("LEVEL:", battery.getLevel() + "%");
+        batteryInformationCardView.addContent("SCALE:", battery.getScale() + "%");
+        batteryInformationCardView.addContent("HEALTH:", battery.gethealthStatus());
+        batteryInformationCardView.addContent("VOLTAGE:", battery.getVoltage() + " mV");
+        batteryInformationCardView.addContent("PRESENT:", battery.getPresent() + "");
+        batteryInformationCardView.addContent("TECHNOLOGY:", battery.getTechnology());
+        batteryInformationCardView.addContent("TEMPERATURE:", battery.getTemperature() + "" + (char) 0x00B0 + "C");
+        batteryInformationCardView.attachContentViews();
+        homeContainer.addView(batteryInformationCardView);
+        // CHARGING INFORMATION
+        BatteryDetailCardView batteryStatusCardView = BatteryDetailCardView.getInstance(context);
+        batteryStatusCardView.setTitle("CHARGING INFORMATION");
+        batteryStatusCardView.addContent("STATE:", battery.getChargeState());
+        batteryStatusCardView.addContent("PLUGGED:", battery.isChargePlug() + "");
+        batteryStatusCardView.addContent("POWER SOURCE:", battery.getChargingConnection());
+        batteryStatusCardView.attachContentViews();
+        homeContainer.addView(batteryStatusCardView);
+
         Log.d("isCharging:", battery.isCharging() + "");
         Log.d("isFullCharged:", battery.isFullCharged() + "");
         Log.d("isChargingOnUSB:", battery.isChargingOnUSB() + "");
