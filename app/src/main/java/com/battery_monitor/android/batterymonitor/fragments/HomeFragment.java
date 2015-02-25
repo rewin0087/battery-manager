@@ -1,7 +1,6 @@
 package com.battery_monitor.android.batterymonitor.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,16 +29,34 @@ public class HomeFragment extends BaseFragment {
     }
 
     public HomeFragment() {
+        context = getActivity().getApplication();
+        battery = Battery.getInstance(context);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        context = getActivity().getApplication();
-        battery = Battery.getInstance(context);
-
         View rootView = inflater.inflate(R.layout.home_fragment, container, false);
         LinearLayout homeContainer = (LinearLayout) rootView.findViewById(R.id.home_container);
+
         // BATTERY INFORMATION
+        homeContainer.addView(batteryInformationView());
+        // CHARGING INFORMATION
+        homeContainer.addView(chargingInformationView());
+
+        return rootView;
+    }
+
+    private BatteryDetailCardView chargingInformationView() {
+        BatteryDetailCardView chargingInformationCardView = BatteryDetailCardView.getInstance(context);
+        chargingInformationCardView.setTitle("CHARGING INFORMATION");
+        chargingInformationCardView.addContent("STATE:", battery.getChargeState());
+        chargingInformationCardView.addContent("PLUGGED:", battery.isChargePlug() + "");
+        chargingInformationCardView.addContent("POWER SOURCE:", battery.getChargingConnection());
+        chargingInformationCardView.attachContentViews();
+        return chargingInformationCardView;
+    }
+
+    private BatteryDetailCardView batteryInformationView() {
         BatteryDetailCardView batteryInformationCardView = BatteryDetailCardView.getInstance(context);
         batteryInformationCardView.setTitle("BATTERY INFORMATION");
         batteryInformationCardView.addContent("HEALTH:", battery.gethealthStatus());
@@ -51,29 +68,6 @@ public class HomeFragment extends BaseFragment {
         batteryInformationCardView.addContent("TECHNOLOGY:", battery.getTechnology());
         batteryInformationCardView.addContent("TEMPERATURE:", battery.getTemperature() + "" + (char) 0x00B0 + "C");
         batteryInformationCardView.attachContentViews();
-        homeContainer.addView(batteryInformationCardView);
-        // CHARGING INFORMATION
-        BatteryDetailCardView batteryStatusCardView = BatteryDetailCardView.getInstance(context);
-        batteryStatusCardView.setTitle("CHARGING INFORMATION");
-        batteryStatusCardView.addContent("STATE:", battery.getChargeState());
-        batteryStatusCardView.addContent("PLUGGED:", battery.isChargePlug() + "");
-        batteryStatusCardView.addContent("POWER SOURCE:", battery.getChargingConnection());
-        batteryStatusCardView.attachContentViews();
-        homeContainer.addView(batteryStatusCardView);
-
-        Log.d("isCharging:", battery.isCharging() + "");
-        Log.d("isFullCharged:", battery.isFullCharged() + "");
-        Log.d("isChargingOnUSB:", battery.isChargingOnUSB() + "");
-        Log.d("isChargingOnAC:", battery.isChargingOnAC() + "");
-        Log.d("getCurrentBatteryLevel:", battery.getCurrentBatteryLevel() + "");
-        Log.d("level:", battery.getLevel() + "");
-        Log.d("scale:", battery.getScale() + "");
-        Log.d("EXTRA_HEALTH:", battery.gethealthStatus() + "");
-        Log.d("EXTRA_TEMPERATURE:", battery.getTemperature() + "");
-        Log.d("EXTRA_TECHNOLOGY:", battery.getTechnology() + "");
-        Log.d("EXTRA_STATUS:", battery.getStatus() + "");
-        Log.d("EXTRA_VOLTAGE:", battery.getVoltage() + "");
-
-        return rootView;
+        return batteryInformationCardView;
     }
 }
