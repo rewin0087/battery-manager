@@ -62,7 +62,7 @@ public class Session {
 
     public String getCurrentTime() {
         Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss a");
         return ft.format(date).toString();
     }
 

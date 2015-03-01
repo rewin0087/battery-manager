@@ -1,16 +1,12 @@
 package com.battery_monitor.android.batterymonitor.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.battery_monitor.android.batterymonitor.R;
-import com.battery_monitor.android.batterymonitor.activities.ChargingActivity;
-import com.battery_monitor.android.batterymonitor.activities.FullChargedActivity;
 import com.battery_monitor.android.batterymonitor.helpers.BatteryDetailCardView;
 import com.battery_monitor.android.batterymonitor.utilities.Battery;
 
@@ -43,7 +39,7 @@ public class HomeFragment extends BaseFragment {
         battery = new Battery(context);
         rootView = inflater.inflate(R.layout.home_fragment, container, false);
         LinearLayout homeContainer = (LinearLayout) rootView.findViewById(R.id.home_container);
-        setButtonOnClickListener();
+//        setButtonOnClickListener();
 
         // BATTERY INFORMATION
         homeContainer.addView(batteryInformationView());
@@ -53,26 +49,26 @@ public class HomeFragment extends BaseFragment {
         return rootView;
     }
 
-    private void setButtonOnClickListener() {
-        Button chargingButton = (Button) rootView.findViewById(R.id.charging_button);
-        Button fullChargedButton = (Button) rootView.findViewById(R.id.fullcharged_button);
-
-        chargingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, ChargingActivity.class);
-                startActivity(i);
-            }
-        });
-
-        fullChargedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, FullChargedActivity.class);
-                startActivity(i);
-            }
-        });
-    }
+//    private void setButtonOnClickListener() {
+//        Button chargingButton = (Button) rootView.findViewById(R.id.charging_button);
+//        Button fullChargedButton = (Button) rootView.findViewById(R.id.fullcharged_button);
+//
+//        chargingButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context, ChargingActivity.class);
+//                startActivity(i);
+//            }
+//        });
+//
+//        fullChargedButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context, FullChargedActivity.class);
+//                startActivity(i);
+//            }
+//        });
+//    }
 
     private BatteryDetailCardView chargingInformationView() {
         BatteryDetailCardView chargingInformationCardView = BatteryDetailCardView.getInstance(context);
