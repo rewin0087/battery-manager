@@ -1,7 +1,9 @@
 package com.battery_monitor.android.batterymonitor.utilities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Point;
+import android.os.PowerManager;
 import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
@@ -42,11 +44,21 @@ public class ApplicationWindow {
     }
 
     public static void wakePhone(Activity activity) {
+        // wake the phone
+        PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wl = pm.newWakeLock((PowerManager.SCREEN_BRIGHT_WAKE_LOCK |
+                PowerManager.FULL_WAKE_LOCK |
+                PowerManager.ACQUIRE_CAUSES_WAKEUP), "");
+
+        wl.acquire();
+
         Window window = activity.getWindow();
 
         window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        wl.release();
     }
 }

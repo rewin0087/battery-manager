@@ -39,7 +39,7 @@ public class HomeFragment extends BaseFragment {
         battery = new Battery(context);
         rootView = inflater.inflate(R.layout.home_fragment, container, false);
         LinearLayout homeContainer = (LinearLayout) rootView.findViewById(R.id.home_container);
-//        setButtonOnClickListener();
+        setButtonOnClickListener();
 
         // BATTERY INFORMATION
         homeContainer.addView(batteryInformationView());
@@ -49,7 +49,7 @@ public class HomeFragment extends BaseFragment {
         return rootView;
     }
 
-//    private void setButtonOnClickListener() {
+    private void setButtonOnClickListener() {
 //        Button chargingButton = (Button) rootView.findViewById(R.id.charging_button);
 //        Button fullChargedButton = (Button) rootView.findViewById(R.id.fullcharged_button);
 //
@@ -68,7 +68,7 @@ public class HomeFragment extends BaseFragment {
 //                startActivity(i);
 //            }
 //        });
-//    }
+    }
 
     private BatteryDetailCardView chargingInformationView() {
         BatteryDetailCardView chargingInformationCardView = BatteryDetailCardView.getInstance(context);

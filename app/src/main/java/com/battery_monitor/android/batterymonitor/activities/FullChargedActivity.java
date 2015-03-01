@@ -10,24 +10,25 @@ import android.widget.TextView;
 
 import com.battery_monitor.android.batterymonitor.R;
 import com.battery_monitor.android.batterymonitor.utilities.ApplicationWindow;
-import com.battery_monitor.android.batterymonitor.utilities.Battery;
 import com.battery_monitor.android.batterymonitor.utilities.FontFace;
 import com.battery_monitor.android.batterymonitor.utilities.Session;
 
 public class FullChargedActivity extends ActionBarActivity {
 
     protected MediaPlayer mp;
+
     protected AudioManager mAudioManager;
+
     protected int originalVolume;
+
+    private float MAX_VOLUME = 0.1f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ApplicationWindow.floatActivity(this);
-        super.onCreate(savedInstanceState);
-        Battery.getInstance(this).setAppTheme();
-        FontFace.toDigitalLedFontface(this);
-        setContentView(R.layout.activity_full_charged);
         ApplicationWindow.wakePhone(this);
+        FontFace.setAppFontToLed(this);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_charged);
 
         mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         originalVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -35,7 +36,7 @@ public class FullChargedActivity extends ActionBarActivity {
 
         mp = MediaPlayer.create(this, R.raw.alarm);
         mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mp.setVolume(100, 100);
+        mp.setVolume(MAX_VOLUME, MAX_VOLUME);
         mp.setLooping(true);
         mp.start();
 

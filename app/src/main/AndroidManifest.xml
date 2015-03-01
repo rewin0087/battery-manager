@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.battery_monitor.android.batterymonitor" >
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -47,7 +49,6 @@
         <activity
             android:name=".activities.FullChargedActivity"
             android:label="@string/title_activity_full_charged"
-            android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"
             android:showOnLockScreen="true">
         </activity>
@@ -55,7 +56,6 @@
         <activity
             android:name=".activities.ChargingActivity"
             android:label="@string/title_activity_charging"
-            android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
             android:showOnLockScreen="true" >
