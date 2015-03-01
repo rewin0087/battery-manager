@@ -17,4 +17,30 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/charging_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="CHARGING Activity"/>
+
+            <Button
+                android:id="@+id/fullcharged_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="FULLCHARGED Activity"/>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

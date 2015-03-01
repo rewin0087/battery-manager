@@ -6,5 +6,8 @@
     <string name="history_section">History</string>
     <string name="settings_section">Settings</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_full_charged">Battery Full Charged</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_charging">Battery Charging</string>
 
 </resources>
