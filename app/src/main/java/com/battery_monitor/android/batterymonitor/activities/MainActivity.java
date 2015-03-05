@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import com.battery_monitor.android.batterymonitor.R;
 import com.battery_monitor.android.batterymonitor.adapters.SectionsPagerAdapter;
 import com.battery_monitor.android.batterymonitor.utilities.Battery;
-import com.battery_monitor.android.batterymonitor.utilities.FontFace;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -35,8 +34,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Battery.getInstance(this).setAppTheme();
-        FontFace.setAppFontToLed(this);
         setContentView(R.layout.activity_main);
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();

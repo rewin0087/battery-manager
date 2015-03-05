@@ -9,5 +9,6 @@
     <string name="title_activity_full_charged">Battery Full Charged</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_charging">Battery Charging</string>
+    <string name="title_activity_connect_charger">ConnectChargerActivity</string>
 
 </resources>

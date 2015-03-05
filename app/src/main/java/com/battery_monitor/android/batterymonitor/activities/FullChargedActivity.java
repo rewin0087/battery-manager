@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.battery_monitor.android.batterymonitor.R;
 import com.battery_monitor.android.batterymonitor.utilities.ApplicationWindow;
-import com.battery_monitor.android.batterymonitor.utilities.FontFace;
 import com.battery_monitor.android.batterymonitor.utilities.Session;
 
 public class FullChargedActivity extends ActionBarActivity {
@@ -26,7 +25,6 @@ public class FullChargedActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ApplicationWindow.wakePhone(this);
-        FontFace.setAppFontToLed(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_charged);
 
