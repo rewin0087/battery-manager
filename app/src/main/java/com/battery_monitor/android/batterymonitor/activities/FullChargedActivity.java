@@ -21,7 +21,7 @@ public class FullChargedActivity extends ActionBarActivity {
 
     protected int originalVolume;
 
-    private float MAX_VOLUME = 0.1f;
+    private float MAX_VOLUME = 1f;//0.1f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
