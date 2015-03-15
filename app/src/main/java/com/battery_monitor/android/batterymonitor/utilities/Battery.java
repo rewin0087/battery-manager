@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.battery_monitor.android.batterymonitor.R;
 import com.battery_monitor.android.batterymonitor.services.BatteryMonitorService;
@@ -23,16 +24,26 @@ public class Battery {
 
     public static void runService(Context context) {
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        boolean isServiceNotPresent = false;
 
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             if (BatteryMonitorService.class.getName().equals(service.service.getClassName())) {
-                Log.d("BATTERY SERVICE", "INSTANTIATED ALREADY");
+                isServiceNotPresent = false;
+                break;
             } else {
-                Log.d("BATTERY SERVICE", "INSTANTIATING SERVICE");
-                // start service
-                Intent batteryServiceIntent = new Intent(context, BatteryMonitorService.class);
-                context.startService(batteryServiceIntent);
+                isServiceNotPresent = true;
             }
+        }
+
+        if(isServiceNotPresent) {
+            Log.d("BATTERY SERVICE", "BATTERY SERVICE INSTANTIATING SERVICE");
+            Toast.makeText(context, "BATTERY SERVICE INSTANTIATING SERVICE", Toast.LENGTH_SHORT).show();
+            // start service
+            Intent batteryServiceIntent = new Intent(context, BatteryMonitorService.class);
+            context.startService(batteryServiceIntent);
+        } else  {
+            Log.d("BATTERY SERVICE", "BATTERY SERVICE INSTANTIATED ALREADY");
+            Toast.makeText(context, "BATTERY SERVICE INSTANTIATED ALREADY", Toast.LENGTH_SHORT).show();
         }
     }
 
