@@ -47,6 +47,7 @@ public class FullChargedActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 mp.stop();
+                mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, originalVolume, 0);
                 finish();
             }
         });
